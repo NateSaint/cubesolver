@@ -44,6 +44,25 @@ public class Square {
   }
 
   /**
+   Change the colour of the JPanel by one in the sequence, handles swapping
+   through each colour.
+   */
+  public void updateColour () {
+    if (this.colour == "white")
+      this.setColour(this.colour = "green");
+    else if (this.colour == "green")
+      this.setColour(this.colour = "red");
+    else if (this.colour == "red")
+      this.setColour(this.colour = "blue");
+    else if (this.colour == "blue")
+      this.setColour(this.colour = "yellow");
+    else if (this.colour == "yellow")
+      this.setColour(this.colour = "orange");
+    else if (this.colour == "orange")
+      this.setColour(this.colour = "white");
+  }
+
+  /**
    Get the current colour of JPanel.
 
    @return colour of background of JPanel
