@@ -164,6 +164,11 @@ public class Display implements MouseListener{
     }
   }
 
+  /**
+   Mouse clocked event implemented from MouseListener class.
+
+   @param event Mouse clicked event
+   */
   public void mouseClicked(MouseEvent event) {
     this.changeSquare(((JPanel)event.getSource()).getName());
   }
@@ -181,10 +186,25 @@ public class Display implements MouseListener{
   private void changeSquare (String key) {
     int side;
     int square;
+    Color myYellow;
+    Color myOrange;
 
+    myYellow = new Color(255, 255, 51);
+    myOrange = new Color(255, 140, 0);
     side = Character.getNumericValue(key.charAt(0));
     square = Character.getNumericValue(key.charAt(1));
 
-    this.panels[side][square].updateColour();
+    if (this.panels[side][square].getBackground().equals(Color.WHITE))
+      this.panels[side][square].setBackground(Color.GREEN);
+    else if (this.panels[side][square].getBackground().equals(Color.GREEN))
+      this.panels[side][square].setBackground(Color.RED);
+    else if (this.panels[side][square].getBackground().equals(Color.RED))
+      this.panels[side][square].setBackground(Color.BLUE);
+    else if (this.panels[side][square].getBackground().equals(Color.BLUE))
+      this.panels[side][square].setBackground(myYellow);
+    else if (this.panels[side][square].getBackground().equals(myYellow))
+      this.panels[side][square].setBackground(myOrange);
+    else if (this.panels[side][square].getBackground().equals(myOrange))
+      this.panels[side][square].setBackground(Color.WHITE);
   }
 }

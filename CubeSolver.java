@@ -1,3 +1,8 @@
+/**
+ Class used to apply Corners first method.
+
+ @author Nathen St. Germain
+ */
 public class CubeSolver {
   /**
    Main method.

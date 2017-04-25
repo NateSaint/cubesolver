@@ -38,9 +38,11 @@ public class Square {
     else if (colour == "blue")
       this.panel_square.setBackground(Color.BLUE);
     else if (colour == "yellow")
-      this.panel_square.setBackground(new Color(254, 254, 102));
+      this.panel_square.setBackground(new Color(255, 255, 51));
     else if (colour == "orange")
       this.panel_square.setBackground(new Color(255, 140, 0));
+
+    this.colour = colour;
   }
 
   /**
