@@ -1,7 +1,7 @@
 /**
  Object to represent the 3x3 cube.  Contains methods to initialize cube,
- create different permutations, check is solved, and to handle various
- rotations of the cube.
+ create different permutations, check is solved, handle various
+ rotations of the cube, and solve the cube (provide sequence).
 
  @author Nathen St. Germain
  @version Apr 20, 2017
@@ -53,6 +53,8 @@ public class Cube {
 
   /**
    Check if the 3x3 cube has been solved.
+
+   @return boolean, true if solved, else false
    */
   public boolean checkSolved () {
     boolean solved = false;
@@ -78,6 +80,13 @@ public class Cube {
     }
 
     return toReturn;
+  }
+
+  /**
+   Get the sequence for the cube object.
+   */
+  public void solve () {
+    System.out.println("Sequence to solve cube:");
   }
 
   public void top_CW () {

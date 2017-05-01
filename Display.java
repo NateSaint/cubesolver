@@ -1,6 +1,7 @@
 /**
  Class for displaying 3x3 cube using JFrame.  Contains methods to initialize
- JFrame and graphically display the cube to the user.
+ JFrame and graphically display the cube to the user, and methods to call for
+ the cube to be solved.
 
  @author Nathen St. Germain
  @version Apr 20 2017
@@ -9,7 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Display implements MouseListener{
+public class Display implements MouseListener, ActionListener {
   /*Main frame*/
   private JFrame frame;
 
@@ -20,12 +21,21 @@ public class Display implements MouseListener{
   private JPanel panel_buttons;
   private JPanel[][] panels;
 
+  /*JButtons*/
+  private JButton button_solve;
+  private JButton button_reset;
+  private JButton button_quit;
+
+  private ImageIcon icon;
+
   /*Dimensions for user screen*/
   private double width;
   private double height;
 
   /*Creating mouse listener*/
   private MouseListener listener;
+
+  private String button_string;
 
   /**
    Constructor for Display class.
@@ -35,7 +45,10 @@ public class Display implements MouseListener{
   public Display (String title) {
     this.initFrame(title);
     this.initPanel();
+    this.initButton();
     this.addPanel();
+    this.addButton();
+    this.setButton("default");
   }
 
   /**
@@ -45,6 +58,13 @@ public class Display implements MouseListener{
    */
   public void displayCube (Cube cube) {
     this.panels = cube.getSides();
+
+    this.panel_top.removeAll();
+    this.panel_left.removeAll();
+    this.panel_front.removeAll();
+    this.panel_right.removeAll();
+    this.panel_bottom.removeAll();
+    this.panel_back.removeAll();
 
     for (int i = 0; i < 9; i++)
       this.panel_top.add(this.panels[0][i]);
@@ -59,6 +79,13 @@ public class Display implements MouseListener{
     for (int i = 0; i < 9; i++)
       this.panel_back.add(this.panels[5][i]);
 
+    this.panel_top.revalidate();
+    this.panel_left.revalidate();
+    this.panel_front.revalidate();
+    this.panel_right.revalidate();
+    this.panel_bottom.revalidate();
+    this.panel_back.revalidate();
+
     this.addListenerPanel();
   }
 
@@ -70,7 +97,8 @@ public class Display implements MouseListener{
   private void initFrame (String title) {
     this.frame = new JFrame(title);
     this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.frame.setBackground(Color.BLACK);
+    this.icon = new ImageIcon("icon.jpg");
+    this.frame.setIconImage(this.icon.getImage());
   }
 
   /**
@@ -106,6 +134,23 @@ public class Display implements MouseListener{
   }
 
   /**
+   Initialize JButtons.
+   */
+  private void initButton () {
+    this.button_solve = new JButton ("Solve");
+    this.button_reset = new JButton ("Reset");
+    this.button_quit = new JButton ("Quit");
+
+    this.button_solve.setName("solve");
+    this.button_reset.setName("reset");
+    this.button_quit.setName("quit");
+
+    this.button_solve.addActionListener(this);
+    this.button_reset.addActionListener(this);
+    this.button_quit.addActionListener(this);
+  }
+
+  /**
    Add panels to cube panel which will be added to the main frame.
    */
   private void addPanel () {
@@ -132,19 +177,28 @@ public class Display implements MouseListener{
     this.panel_cube.add(this.panel_fill5);
 
     /*Add cube panel to frame*/
-    this.frame.add(this.panel_cube);
-    this.frame.add(this.panel_buttons);
-    this.panel_buttons.setBackground(Color.RED);
+    this.frame.add(this.panel_cube, BorderLayout.CENTER);
+    this.frame.add(this.panel_buttons, BorderLayout.SOUTH);
 
     this.width = scr.getWidth();
     this.height = scr.getHeight();
 
     this.panel_cube.setSize((int)(height/2.33), (int)((height/2.33) * 1.3333));
     this.panel_cube.setLocation(0, 0);
+    this.panel_buttons.setLocation(0, (int)((height/2.33) * 1.3333) + 1);
 
-    this.frame.setSize((int)(height/2.33), (int)((height/2.33) * 1.3333) + 90);
+    this.frame.setSize((int)(height/2.33), (int)((height/2.33) * 1.3333) + 60);
     this.frame.setLocationRelativeTo(null);
     this.frame.setVisible(true);
+  }
+
+  /**
+   Add JButtons to buttons panel.
+   */
+  private void addButton () {
+    this.panel_buttons.add(this.button_solve);
+    this.panel_buttons.add(this.button_reset);
+    this.panel_buttons.add(this.button_quit);
   }
 
   /**
@@ -161,6 +215,27 @@ public class Display implements MouseListener{
         this.panels[i][j].addMouseListener(this);
         this.panels[i][j].setName(name);
       }
+    }
+  }
+
+  /**
+   Action performed event for use with button click.
+
+   @param event Action performed event
+   */
+  public void actionPerformed(ActionEvent event) {
+    String name;
+
+    name = ((JButton)event.getSource()).getName();
+
+    if (name == "solve") {
+      this.setButton("solve");
+    }
+    else if (name == "reset") {
+      this.setButton("reset");
+    }
+    else if (name == "quit") {
+      System.exit(0);
     }
   }
 
@@ -206,5 +281,23 @@ public class Display implements MouseListener{
       this.panels[side][square].setBackground(myOrange);
     else if (this.panels[side][square].getBackground().equals(myOrange))
       this.panels[side][square].setBackground(Color.WHITE);
+  }
+
+  /**
+   Set solve instance variable.
+
+   @param str String to set
+   */
+  public void setButton (String str) {
+    this.button_string = str;
+  }
+
+  /**
+   Get the current button pressed as a string.
+
+   @return String, button as a string
+   */
+  public String getButton () {
+    return this.button_string;
   }
 }

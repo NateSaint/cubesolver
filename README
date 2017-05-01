@@ -19,8 +19,15 @@ each .java file individually as seen in makefile.
 ------------------------------------------------------------------------------------------------------------------------------
 Usage:
 
-Run the file "CubeSolver.java" once everything has been compiled.  Use desired method of running Java programs, I use the command
+1. Run the file "CubeSolver.java" once everything has been compiled.  Use desired method of running Java programs, I use the command
 line with the command "java CubeSolver"
+
+2. Click each square to change through the colours available to set current cube scramble
+
+3. Use labelled buttons to select what action to perform
+  Reset - reset the cube
+  Solve - provide sequence to solve cube
+  Quit - exit program
 ------------------------------------------------------------------------------------------------------------------------------
 Features to implement to project:
 -Provide sequence to solve
