@@ -6,21 +6,17 @@ Author:
 Nathen St. Germain
 https://github.com/NateSaint
 ------------------------------------------------------------------------------------------------------------------------------
-Using a corners first method, allow user to input their current 3x3 cube scramble and give them a sequence to solve it. Use
-a 2-D graphical user interface to display each side of the cube as moves are happening.  Define the relative position of the
-cube so the user can follow easy.
+Using a corners first method, allow user to input their current 3x3 cube scramble and give them a sequence to solve it. Use a 2-D graphical user interface to display each side of the cube as moves are happening. Define the relative position of the cube so the user can follow easy.
 
 Programmed in Java.
 ------------------------------------------------------------------------------------------------------------------------------
 Compiling:
 
-Compile with makefile by typing "make" while in the cubesolver directory on the command line.  If you cannot run make, compile
-each .java file individually as seen in makefile.
+Compile with makefile by typing "make" while in the cubesolver directory on the command line.  If you cannot run make, compile each .java file individually as seen in makefile.
 ------------------------------------------------------------------------------------------------------------------------------
 Usage:
 
-1. Run the file "CubeSolver.java" once everything has been compiled.  Use desired method of running Java programs, I use the command
-line with the command "java CubeSolver"
+1. Run the file "CubeSolver.java" once everything has been compiled.  Use desired method of running Java programs, I use the command line with the command "java CubeSolver"
 
 2. Click each square to change through the colours available to set current cube scramble
 
