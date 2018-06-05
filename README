@@ -1,19 +1,19 @@
 # cubesolver
 3x3 Cube Solver - Create sequence to solve the cube with a corners first method using Java, display a 2-D GUI.
-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------
 Author:
 
 Nathen St. Germain
 https://github.com/NateSaint
-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------
 Using a corners first method, allow user to input their current 3x3 cube scramble and give them a sequence to solve it. Use a 2-D graphical user interface to display each side of the cube as moves are happening. Define the relative position of the cube so the user can follow easy.
 
 Programmed in Java.
-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------
 Compiling:
 
 Compile with makefile by typing "make" while in the cubesolver directory on the command line.  If you cannot run make, compile each .java file individually as seen in makefile.
-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------
 Usage:
 
 1. Run the file "CubeSolver.java" once everything has been compiled.  Use desired method of running Java programs, I use the command line with the command "java CubeSolver"
@@ -24,10 +24,10 @@ Usage:
   Reset - reset the cube
   Solve - provide sequence to solve cube
   Quit - exit program
-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------
 Features to implement to project:
 -Provide sequence to solve
 -display in 2-D
 -display in 3-D
 -create a random sequence generator to experiment with how long it takes to get a sequence of specified length randomly
-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------
